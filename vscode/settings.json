@@ -10,5 +10,8 @@
     "explorer.confirmDelete": false,
     "editor.fontSize": 20,
     "extensions.ignoreRecommendations": true,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.shellArgs.osx": [
+      "-l"
+    ]
 }
