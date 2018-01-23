@@ -1,0 +1,7 @@
+{
+	"terminal.integrated.shell.windows": "C:\\cygwin\\bin\\bash.exe",
+	"terminal.integrated.shellArgs.windows": ["-l"],
+	"terminal.integrated.env.windows": {
+		"CHERE_INVOKING": "1"
+	}
+}
