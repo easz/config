@@ -1,0 +1,14 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "window.openFilesInNewWindow": "off",
+    "window.zoomLevel": 0,
+    "editor.tabSize": 2,
+    "editor.minimap.enabled": false,
+    "explorer.openEditors.visible": 0,
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false,
+    "editor.fontSize": 20,
+    "extensions.ignoreRecommendations": true,
+    "explorer.confirmDragAndDrop": false
+}
