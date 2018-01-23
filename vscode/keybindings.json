@@ -1,0 +1,14 @@
+[
+	{
+		"key": "shift+alt+enter",
+		"command": "workbench.action.toggleMaximizedPanel"
+	},
+	{ "key": "ctrl+`",
+		"command": "workbench.action.terminal.focus",
+		"when": "!terminalFocus"
+	},
+	{ "key": "ctrl+`",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "terminalFocus"
+	},
+]
