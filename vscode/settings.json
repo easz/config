@@ -8,7 +8,7 @@
     "workbench.sideBar.location": "right",
     "workbench.startupEditor": "none",
     "explorer.confirmDelete": false,
-    "editor.fontSize": 20,
+    "editor.fontSize": 15,
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDragAndDrop": false,
     "terminal.integrated.shellArgs.osx": [
