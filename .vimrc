@@ -87,18 +87,18 @@ let g:ackprg = 'ag --vimgrep'
 ""
 "" mapping
 ""
-" , as Leader key
-let mapleader=","
+" as Leader key
+let mapleader="\<Space>"
 
 ""
-"" file browser"
+"" file browser
 ""
 " <C-b>      to toggle file browser
-" <SPACE>    to open file from file browser
+" <Tab>      to open file from file browser
 " <Enter>    to reveal opened file in file browser
 nnoremap <silent> <C-b>  :NERDTreeToggle<CR>
 nnoremap <silent> <CR>   :NERDTreeFind<CR>
-let g:NERDTreeMapActivateNode = "<SPACE>"
+let g:NERDTreeMapActivateNode = "<Tab>"
 let g:NERDTreeMinimalUI       = 1
 let g:NERDTreeChDirMode       = 2
 let g:NERDTreeShowHidden      = 1
@@ -113,6 +113,7 @@ nnoremap <silent> <Leader>q :close<CR>
 " <:eader>;  search file by name in current working directory
 nnoremap <silent>         ; :Buffers<CR>
 nnoremap <silent> <Leader>; :Files<CR>
+nnoremap <silent> <Leader>p :History:<CR>
 
 " <C-n>       new a unnamed buffe
 nnoremap <silent> <C-n> :enew<CR>i
