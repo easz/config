@@ -1,28 +1,51 @@
-""
-"" vim-plug
-""
+"" Plug-Ins """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
-Plug 'scrooloose/nerdtree'
+" theme
 Plug 'itchyny/lightline.vim'
-Plug 'sheerun/vim-polyglot'
+Plug 'rafi/awesome-vim-colorschemes'
+
+" file
+Plug 'scrooloose/nerdtree'
+
+" search
+Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+
+" language
+Plug 'sheerun/vim-polyglot'
+Plug 'Valloric/YouCompleteMe'
+
+" misc.
+Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 
 call plug#end()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" p4 commands
+"" Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" light-line
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+"" colorscheme
+" Recommended: dracula, wombat256mod, tender, gruvbox
+set background=dark
+color gruvbox
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"" Perforce """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" p4 commands
+" require information from 'p4 set' or P4CONFIG
 command P4Edit             !p4 edit %
 command P4Revert           !p4 revert %
 command P4RevertUnchanged  !p4 revert -a
 command P4Add              !p4 add %
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""
-"" general config
-""
+"" Config """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" general
 set encoding=utf-8
 set fileencoding=utf-8
 scriptencoding utf-8
@@ -67,32 +90,14 @@ set fillchars+=vert:\      " windows separator w/o '|'
 
 set clipboard=unnamed      " clipboard sharing
 
-""
-"" light-line
-""
-let g:lightline = {
-      \ 'colorscheme': 'Dracula',
-      \ }
-
-""
-"" dracula theme
-""
-colorscheme dracula
-
-""
 "" ack / silver searcher
-""
 let g:ackprg = 'ag --vimgrep'
 
-""
 "" mapping
-""
 " as Leader key
 let mapleader="\<Space>"
 
-""
 "" file browser
-""
 " <C-b>      to toggle file browser
 " <Tab>      to open file from file browser
 " <Enter>    to reveal opened file in file browser
@@ -109,24 +114,23 @@ let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore']
 nnoremap <silent> <Leader>w :bp\|bd #<CR>
 nnoremap <silent> <Leader>q :close<CR>
 
-" ;          show all buffers
-" <:eader>;  search file by name in current working directory
-nnoremap <silent>         ; :Buffers<CR>
+" <Leader>,  show all buffers
+" <Leader>;  search file by name in current working directory
+nnoremap <silent> <Leader>, :Buffers<CR>
 nnoremap <silent> <Leader>; :Files<CR>
 nnoremap <silent> <Leader>p :History:<CR>
 
 " <C-n>       new a unnamed buffe
 nnoremap <silent> <C-n> :enew<CR>i
 " <C-s>       save file
-noremap  <C-s>          :update<CR>
-vnoremap <C-S>          <C-C>:update<CR>
-inoremap <C-S>          <C-O>:update<CR>
+silent !stty -ixon
+autocmd VimLeave * silent !stty ixon
+nnoremap <C-s>          :update<CR>
+vnoremap <C-s>          <C-C>:update<CR>
+inoremap <C-s>          <C-O>:update<CR>
 
 " <Tab>       switch buffers
 " <S-Tab>     erverse switch buffers
 nnoremap <silent> <Tab>     :bnext<CR>
 nnoremap <silent> <S-Tab>   :bprevious<CR>
-
-
-
 
