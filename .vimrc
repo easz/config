@@ -1,4 +1,5 @@
 "" Plug-Ins """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-plug
 call plug#begin('~/.vim/plugged')
 
 " theme
@@ -90,7 +91,15 @@ set fillchars+=vert:\      " windows separator w/o '|'
 
 set clipboard=unnamed      " clipboard sharing
 
-"" ack / silver searcher
+"" cursor in cygwin
+if has("win32unix")
+  let &t_ti.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_EI.="\e[1 q"
+  let &t_te.="\e[0 q"
+endif
+
+"" ag / ack
 let g:ackprg = 'ag --vimgrep'
 
 "" mapping
