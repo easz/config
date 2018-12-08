@@ -18,8 +18,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'Valloric/YouCompleteMe'
 
+" Perforce
+Plug 'vim-scripts/genutils'
+Plug 'vim-scripts/perforce'
+
 " misc.
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
+Plug 'djoshea/vim-autoread'
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,15 +39,6 @@ let g:lightline = {
 " Recommended: dracula, wombat256mod, tender, gruvbox
 set background=dark
 color gruvbox
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"" Perforce """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" p4 commands
-" require information from 'p4 set' or P4CONFIG
-command P4Edit             !p4 edit %
-command P4Revert           !p4 revert %
-command P4RevertUnchanged  !p4 revert -a
-command P4Add              !p4 add %
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "" Config """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,6 +94,9 @@ if has("win32unix")
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
 endif
+
+"" Perforce
+let g:p4EnableActiveStatus = 0
 
 "" ag / ack
 let g:ackprg = 'ag --vimgrep'
