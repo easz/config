@@ -19,8 +19,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Valloric/YouCompleteMe'
 
 " Perforce
-Plug 'vim-scripts/genutils'
-Plug 'vim-scripts/perforce'
+Plug 'easz/perforce.vim'
 
 " misc.
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
@@ -94,9 +93,6 @@ if has("win32unix")
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
 endif
-
-"" Perforce
-let g:p4EnableActiveStatus = 0
 
 "" ag / ack
 let g:ackprg = 'ag --vimgrep'
