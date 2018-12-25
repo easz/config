@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 " language
 Plug 'sheerun/vim-polyglot'
 Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 " Perforce
 Plug 'easz/perforce.vim'
@@ -48,6 +49,7 @@ scriptencoding utf-8
 
 filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
+set number                 " Enable line number
 
 set autoindent             " Indent according to previous line.
 set expandtab              " Use spaces instead of tabs.
@@ -97,6 +99,9 @@ endif
 "" ag / ack
 let g:ackprg = 'ag --vimgrep'
 
+"" YCM
+let g:ycm_confirm_extra_conf = 0
+
 "" mapping
 " as Leader key
 let mapleader="\<Space>"
@@ -105,8 +110,8 @@ let mapleader="\<Space>"
 " <C-b>      to toggle file browser
 " <Tab>      to open file from file browser
 " <Enter>    to reveal opened file in file browser
-nnoremap <silent> <C-b>  :NERDTreeToggle<CR>
-nnoremap <silent> <CR>   :NERDTreeFind<CR>
+nnoremap <silent> <Leader>b    :NERDTreeToggle<CR>
+nnoremap <silent> <CR>         :NERDTreeFind<CR>
 let g:NERDTreeMapActivateNode = "<Tab>"
 let g:NERDTreeMinimalUI       = 1
 let g:NERDTreeChDirMode       = 2
@@ -125,7 +130,7 @@ nnoremap <silent> <Leader>; :Files<CR>
 nnoremap <silent> <Leader>p :History:<CR>
 
 " <C-n>       new a unnamed buffe
-nnoremap <silent> <C-n> :enew<CR>i
+"nnoremap <silent> <C-n> :enew<CR>i
 " <C-s>       save file
 silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
@@ -133,8 +138,8 @@ nnoremap <C-s>          :update<CR>
 vnoremap <C-s>          <C-C>:update<CR>
 inoremap <C-s>          <C-O>:update<CR>
 
-" <Tab>       switch buffers
-" <S-Tab>     erverse switch buffers
-nnoremap <silent> <Tab>     :bnext<CR>
-nnoremap <silent> <S-Tab>   :bprevious<CR>
+" <Leader><Tab>       switch buffers
+" <S-Tab>             reverse switch buffers
+nnoremap <silent> <Leader><Tab>  :bnext<CR>
+nnoremap <silent> <S-Tab>        :bprevious<CR>
 
