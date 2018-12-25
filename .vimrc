@@ -116,7 +116,7 @@ let g:ackprg = 'ag --vimgrep'
 
 "" YCM
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/global_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 
 ""
 "" Key Mapping
