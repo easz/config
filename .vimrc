@@ -96,6 +96,9 @@ set fillchars+=vert:\      " windows separator w/o '|'
 
 set clipboard=unnamed      " clipboard sharing
 
+"" language
+au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
+
 "" cursor in cygwin
 if has("win32unix")
   let &t_ti.="\e[1 q"
@@ -113,6 +116,7 @@ let g:ackprg = 'ag --vimgrep'
 
 "" YCM
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/.vim/global_extra_conf.py'
 
 ""
 "" Key Mapping
