@@ -1,4 +1,7 @@
-"" Plug-Ins """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""
+"" Plug-Ins
+""
+
 "" vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -27,9 +30,12 @@ Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'djoshea/vim-autoread'
 
 call plug#end()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"" Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""
+"" Themes
+""
+
 "" light-line
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -39,9 +45,11 @@ let g:lightline = {
 " Recommended: dracula, wombat256mod, tender, gruvbox
 set background=dark
 color gruvbox
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"" Config """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""
+"" Config
+""
+
 "" general
 set encoding=utf-8
 set fileencoding=utf-8
@@ -96,20 +104,27 @@ if has("win32unix")
   let &t_te.="\e[0 q"
 endif
 
+""
+"" Add-On
+""
+
 "" ag / ack
 let g:ackprg = 'ag --vimgrep'
 
 "" YCM
 let g:ycm_confirm_extra_conf = 0
 
-"" mapping
-" as Leader key
+""
+"" Key Mapping
+""
+
+"" <Space>   -- Leader key
 let mapleader="\<Space>"
 
-"" file browser
-" <C-b>      to toggle file browser
-" <Tab>      to open file from file browser
-" <Enter>    to reveal opened file in file browser
+"" file browser (NERDTree)
+" <C-b>      -- to toggle file browser
+" <Tab>      -- to open file from file browser
+" <Enter>    -- to reveal opened file in file browser
 nnoremap <silent> <Leader>b    :NERDTreeToggle<CR>
 nnoremap <silent> <CR>         :NERDTreeFind<CR>
 let g:NERDTreeMapActivateNode = "<Tab>"
@@ -118,28 +133,32 @@ let g:NERDTreeChDirMode       = 2
 let g:NERDTreeShowHidden      = 1
 let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore']
 
-" <Leader>w  close current buffer
-" <Leader>q  close current window
-nnoremap <silent> <Leader>w :bp\|bd #<CR>
-nnoremap <silent> <Leader>q :close<CR>
-
-" <Leader>,  show all buffers
-" <Leader>;  search file by name in current working directory
-nnoremap <silent> <Leader>, :Buffers<CR>
-nnoremap <silent> <Leader>; :Files<CR>
-nnoremap <silent> <Leader>p :History:<CR>
-
-" <C-n>       new a unnamed buffe
-"nnoremap <silent> <C-n> :enew<CR>i
-" <C-s>       save file
+"" Buffer, Window, File, Command
+" <Leader>w  -- close current buffer
+" <Leader>q  -- close current window
+nnoremap <silent> <Leader>w  :bp\|bd #<CR>
+nnoremap <silent> <Leader>q  :close<CR>
+" <Leader>,  -- show all buffers (fzf)
+" <Leader>;  -- search file by name in current working directory (fzf)
+" <Leader>p  -- show command history (fzf)
+nnoremap <silent> <Leader>,  :Buffers<CR>
+nnoremap <silent> <Leader>;  :Files<CR>
+nnoremap <silent> <Leader>p  :History:<CR>
+" <C-s>      -- save file
+" note: 'stty -ixon' prevents terminal intercept C-s
 silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
-nnoremap <C-s>          :update<CR>
-vnoremap <C-s>          <C-C>:update<CR>
-inoremap <C-s>          <C-O>:update<CR>
-
-" <Leader><Tab>       switch buffers
-" <S-Tab>             reverse switch buffers
-nnoremap <silent> <Leader><Tab>  :bnext<CR>
+nnoremap <C-s>  :update<CR>
+vnoremap <C-s>  <C-C>:update<CR>
+inoremap <C-s>  <C-O>:update<CR>
+" <Tab>         -- switch buffers
+" <S-Tab>       -- reverse switch buffers
+nnoremap <silent> <Tab>  :bnext<CR>
 nnoremap <silent> <S-Tab>        :bprevious<CR>
 
+"" YCM
+nnoremap <Leader>g  :YcmCompleter GoTo<CR>
+nnoremap <C-x>r  :YcmCompleter GoToReferences<CR>
+nnoremap <C-x>t  :YcmCompleter GetType<CR>
+nnoremap <C-x>p  :YcmCompleter GetParent<CR>
+nnoremap <C-x>d  :YcmCompleter GetDoc<CR>
