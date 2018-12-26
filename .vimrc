@@ -2,6 +2,10 @@
 "" Plug-Ins
 ""
 
+""  Note: Manual Installation Steps
+""
+""  YCM -- ~/.vim/plugged/YouCompleteMe/install.py
+
 "" vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -14,7 +18,7 @@ Plug 'scrooloose/nerdtree'
 
 " search
 Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 
 " language
