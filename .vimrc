@@ -47,7 +47,6 @@ let g:lightline = {
 
 "" colorscheme
 " Recommended: dracula, wombat256mod, tender, gruvbox
-set background=dark
 color gruvbox
 
 ""
@@ -94,6 +93,8 @@ set synmaxcol   =200       " Only highlight the first 200 columns.
 set noerrorbells           " Disable audible and visual bells
 set novisualbell           " -
 set t_vb=                  " -
+set t_Co=256               " 256 color term
+set background=dark        " dark
 
 set nowrap                 " no wrap
 set fillchars+=vert:\      " windows separator w/o '|'
