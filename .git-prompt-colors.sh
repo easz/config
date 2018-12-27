@@ -3,7 +3,7 @@ override_git_prompt_colors() {
   GIT_PROMPT_THEME_NAME="Custom"
 
   Time12a="\$(date +%H:%M)"
-  AtHost=" @ "
+  AtHost="@"
   AtPath=":"
   PathShort="\w"
   Username="\u"
