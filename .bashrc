@@ -18,7 +18,7 @@
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ag -- silver searche for fzf
-if hash ag 2>/dev/null; then
+if hash ag 2>/dev/null && hash fzf 2>/dev/null; then
   export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -48,6 +48,6 @@ alias lla='ll -a'
 alias md='mkdir -p'
 
 # PATH
-export PATH="/usr/local/bin:$PATH"
-export PATH="~/Workspace/LOS/platform-tools:$PATH"
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+[ -d /usr/local/bin ]                 && export PATH="/usr/local/bin:$PATH"
+[ -d ~/Workspace/LOS/platform-tools ] && export PATH="~/Workspace/LOS/platform-tools:$PATH"
+[ -d /usr/local/opt/go/libexec ]      && export PATH="$PATH:/usr/local/opt/go/libexec/bin"
