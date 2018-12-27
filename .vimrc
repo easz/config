@@ -101,6 +101,12 @@ set fillchars+=vert:\      " windows separator w/o '|'
 
 set clipboard=unnamed      " clipboard sharing
 
+"" open file at the last visited line
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
 "" language
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 
