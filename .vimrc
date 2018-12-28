@@ -40,6 +40,9 @@ call plug#end()
 "" Themes
 ""
 
+"" disable bg color to work properly in tmux (this autocmd must be defined before any colorscheme definition
+au ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+
 "" light-line
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -48,6 +51,7 @@ let g:lightline = {
 "" colorscheme
 " Recommended: dracula, wombat256mod, tender, gruvbox
 color gruvbox
+
 
 ""
 "" Config
@@ -101,11 +105,10 @@ set fillchars+=vert:\      " windows separator w/o '|'
 
 set clipboard=unnamed      " clipboard sharing
 
+
 "" open file at the last visited line
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
-endif
 
 "" language
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
