@@ -4,6 +4,9 @@
 # TERM
 export TERM=xterm-256color
 
+# No duplicated history
+export HISTCONTROL=ignoreboth:erasedups
+
 # Aliases
 alias rm='rm -i'
 alias cp='cp -i'
@@ -26,24 +29,28 @@ alias md='mkdir -p'
 # Note: the order matters
 
 # bash-git-prompt
+GIT_PROMPT_ONLY_IN_REPO=0
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
+GIT_PROMPT_IGNORE_SUBMODULES=1
+GIT_PROMPT_WITH_VIRTUAL_ENV=0
+GIT_PROMPT_SHOW_UPSTREAM=0
+GIT_PROMPT_SHOW_UNTRACKED_FILES=no
+GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
+GIT_PROMPT_THEME=Custom # (default ~/.git-prompt-colors.sh)
+#
 if [ -f ~/.bash-git-prompt/gitprompt.sh  ]; then
-  GIT_PROMPT_ONLY_IN_REPO=0
-  GIT_PROMPT_FETCH_REMOTE_STATUS=0
-  GIT_PROMPT_IGNORE_SUBMODULES=1
-  GIT_PROMPT_WITH_VIRTUAL_ENV=0
-  GIT_PROMPT_SHOW_UPSTREAM=0
-  GIT_PROMPT_SHOW_UNTRACKED_FILES=no
-  GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
-  GIT_PROMPT_THEME=Custom # (default ~/.git-prompt-colors.sh)
   source ~/.bash-git-prompt/gitprompt.sh
+elif [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 else
   echo "To install bash-git-prompt: https://github.com/magicmonty/bash-git-prompt"
 fi
 
 
 # bash-completion
-if [ -f /usr/local/etc/bash_completion ]; then
-  source /usr/local/etc/bash_completion
+if [ -f "/usr/local/etc/bash_completion" ]; then
+  source "/usr/local/etc/bash_completion"
 else
   echo "To install bash-completion: https://github.com/scop/bash-completion"
 fi
@@ -62,18 +69,25 @@ fi
 
 
 # fzf
-if [ -f ~/.fzf.bash ]; then
-  source ~/.fzf.bash
+if [ ! -d ~/.fzf ]; then
+  echo "To install fzf with vim: https://github.com/junegunn/fzf.vim"
 else
-  echo "To install fzf: https://github.com/junegunn/fzf#using-git"
+  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+  if hash fzf 2>/dev/null; then
+    export FZF_TMUX=1
+  else
+    echo "To install fzf: https://github.com/junegunn/fzf"
+  fi
 fi
 
 
 # ag -- silver searche for fzf
-if hash ag 2>/dev/null && hash fzf 2>/dev/null; then
-  export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+if hash ag 2>/dev/null; then
+  if hash fzf 2>/dev/null; then
+    export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  fi
 else
   echo "To install silver searcher: https://github.com/ggreer/the_silver_searcher"
 fi

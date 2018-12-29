@@ -18,7 +18,7 @@ Plug 'scrooloose/nerdtree'
 
 " search
 Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " language
@@ -151,9 +151,11 @@ let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore', '\.swp$']
 nnoremap <silent> <Leader>w  :bp\|bd #<CR>
 nnoremap <silent> <Leader>q  :close<CR>
 " <Leader>,  -- show all buffers (fzf)
+" <Leader>.  -- show recent files (fzf)
 " <Leader>;  -- search file by name in current working directory (fzf)
 " <Leader>p  -- show command history (fzf)
 nnoremap <silent> <Leader>,  :Buffers<CR>
+nnoremap <silent> <Leader>.  :History<CR>
 nnoremap <silent> <Leader>;  :Files<CR>
 nnoremap <silent> <Leader>p  :History:<CR>
 " <C-s>      -- save file
