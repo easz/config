@@ -40,7 +40,8 @@ call plug#end()
 "" Themes
 ""
 
-"" disable bg color to work properly in tmux (this autocmd must be defined before any colorscheme definition
+"" disable bg color to work properly in tmux
+" (this autocmd must be defined before any colorscheme definition)
 au ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 "" light-line
@@ -113,13 +114,6 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 "" language
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 
-"" cursor in cygwin
-if has("win32unix")
-  let &t_ti.="\e[1 q"
-  let &t_SI.="\e[5 q"
-  let &t_EI.="\e[1 q"
-  let &t_te.="\e[0 q"
-endif
 
 ""
 "" Add-On
@@ -149,7 +143,7 @@ let g:NERDTreeMapActivateNode = "<Tab>"
 let g:NERDTreeMinimalUI       = 1
 let g:NERDTreeChDirMode       = 2
 let g:NERDTreeShowHidden      = 1
-let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore']
+let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore', '\.swp$']
 
 "" Buffer, Window, File, Command
 " <Leader>w  -- close current buffer
