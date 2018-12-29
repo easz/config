@@ -23,6 +23,31 @@ alias md='mkdir -p'
 ##
 ## Add-On & Extra
 ##
+# Note: the order matters
+
+# bash-git-prompt
+if [ -f ~/.bash-git-prompt/gitprompt.sh  ]; then
+  GIT_PROMPT_ONLY_IN_REPO=0
+  GIT_PROMPT_FETCH_REMOTE_STATUS=0
+  GIT_PROMPT_IGNORE_SUBMODULES=1
+  GIT_PROMPT_WITH_VIRTUAL_ENV=0
+  GIT_PROMPT_SHOW_UPSTREAM=0
+  GIT_PROMPT_SHOW_UNTRACKED_FILES=no
+  GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
+  GIT_PROMPT_THEME=Custom # (default ~/.git-prompt-colors.sh)
+  source ~/.bash-git-prompt/gitprompt.sh
+else
+  echo "To install bash-git-prompt: https://github.com/magicmonty/bash-git-prompt"
+fi
+
+
+# bash-completion
+if [ -f /usr/local/etc/bash_completion ]; then
+  source /usr/local/etc/bash_completion
+else
+  echo "To install bash-completion: https://github.com/scop/bash-completion"
+fi
+
 
 # tmux
 if hash tmux 2>/dev/null; then
@@ -53,29 +78,6 @@ else
   echo "To install silver searcher: https://github.com/ggreer/the_silver_searcher"
 fi
 
-
-# bash-completion
-if [ -f /usr/local/etc/bash_completion ]; then
-  source /usr/local/etc/bash_completion
-else
-  echo "To install bash-completion: https://github.com/scop/bash-completion"
-fi
-
-
-# bash-git-prompt
-if [ -f ~/.bash-git-prompt/gitprompt.sh  ]; then
-  GIT_PROMPT_ONLY_IN_REPO=0
-  GIT_PROMPT_FETCH_REMOTE_STATUS=0
-  GIT_PROMPT_IGNORE_SUBMODULES=1
-  GIT_PROMPT_WITH_VIRTUAL_ENV=0
-  GIT_PROMPT_SHOW_UPSTREAM=0
-  GIT_PROMPT_SHOW_UNTRACKED_FILES=no
-  GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
-  GIT_PROMPT_THEME=Custom # (default ~/.git-prompt-colors.sh)
-  source ~/.bash-git-prompt/gitprompt.sh
-else
-  echo "To install bash-git-prompt: https://github.com/magicmonty/bash-git-prompt"
-fi
 
 ##
 ## Private Stuff
