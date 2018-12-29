@@ -46,7 +46,7 @@ au ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 "" light-line
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'seoul256',
       \ }
 
 "" colorscheme
