@@ -68,6 +68,10 @@ else
 fi
 
 
+# TPM
+[ -d ~/.tmux/plugins/tpm ] || echo "To install tmux plugin manager: https://github.com/tmux-plugins/tpm"
+
+
 # fzf
 if [ ! -d ~/.fzf ]; then
   echo "To install fzf with vim: https://github.com/junegunn/fzf.vim"
