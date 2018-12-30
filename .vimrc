@@ -128,6 +128,7 @@ endif
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 
+
 ""
 "" Key Mapping
 ""
@@ -179,3 +180,22 @@ nnoremap <C-x>t  :YcmCompleter GetType<CR>
 nnoremap <C-x>p  :YcmCompleter GetParent<CR>
 nnoremap <C-x>d  :YcmCompleter GetDoc<CR>
 
+"" Search/Highlight
+" { Credit: https://github.com/nelstrom/vim-visual-star-search/blob/master/plugin/visual-star-search.vim
+"           https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let selected = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @/ = selected
+  let @s = temp
+  return selected
+endfunction
+" *, #           -- search selected text in VISUAL mode
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+" <C-r>          -- replace selected text in VISUAL mode.
+vnoremap <C-r> "hy:%s/<c-r>=<SID>VSetSearch('/')<CR>//gc<left><left><left>
+" <Leader><ESC>  -- clear search result highlight
+nnoremap <silent> <Leader><ESC>  :noh<CR>
+" }
