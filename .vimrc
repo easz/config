@@ -175,12 +175,12 @@ nnoremap <silent> <S-Tab>        :bprevious<CR>
 
 "" YCM
 nnoremap <Leader>g  :YcmCompleter GoTo<CR>
-nnoremap <C-x>r  :YcmCompleter GoToReferences<CR>
-nnoremap <C-x>t  :YcmCompleter GetType<CR>
-nnoremap <C-x>p  :YcmCompleter GetParent<CR>
-nnoremap <C-x>d  :YcmCompleter GetDoc<CR>
+nnoremap <C-x>r     :YcmCompleter GoToReferences<CR>
+nnoremap <C-x>t     :YcmCompleter GetType<CR>
+nnoremap <C-x>p     :YcmCompleter GetParent<CR>
+nnoremap <C-x>d     :YcmCompleter GetDoc<CR>
 
-"" Search/Highlight
+"" Search/Highlight/Replace
 " { Credit: https://github.com/nelstrom/vim-visual-star-search/blob/master/plugin/visual-star-search.vim
 "           https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
 function! s:VSetSearch(cmdtype)
@@ -189,7 +189,7 @@ function! s:VSetSearch(cmdtype)
   let selected = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
   let @/ = selected
   let @s = temp
-  return selected
+  return selected " escaped selected text pattern
 endfunction
 " *, #           -- search selected text in VISUAL mode
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
@@ -199,3 +199,4 @@ vnoremap <C-r> "hy:%s/<c-r>=<SID>VSetSearch('/')<CR>//gc<left><left><left>
 " <Leader><ESC>  -- clear search result highlight
 nnoremap <silent> <Leader><ESC>  :noh<CR>
 " }
+
