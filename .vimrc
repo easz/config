@@ -120,7 +120,9 @@ au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 ""
 
 "" ag / ack
-let g:ackprg = 'ag --vimgrep'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 "" YCM
 let g:ycm_confirm_extra_conf = 0
@@ -176,3 +178,4 @@ nnoremap <C-x>r  :YcmCompleter GoToReferences<CR>
 nnoremap <C-x>t  :YcmCompleter GetType<CR>
 nnoremap <C-x>p  :YcmCompleter GetParent<CR>
 nnoremap <C-x>d  :YcmCompleter GetDoc<CR>
+
