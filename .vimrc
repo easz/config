@@ -25,6 +25,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+"Plug 'w0rp/ale'
 
 " Perforce
 Plug 'easz/perforce.vim'
@@ -128,6 +129,12 @@ endif
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 
+"" ALE
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_enter = 0
+"let $PATH = '/usr/local/opt/llvm/bin:'.$PATH
+"let g:ale_linters = {'cpp': []}
+"let g:ale_fixers = {'cpp': ['clang-format']}
 
 ""
 "" Key Mapping
@@ -180,7 +187,7 @@ nnoremap <C-x>t     :YcmCompleter GetType<CR>
 nnoremap <C-x>p     :YcmCompleter GetParent<CR>
 nnoremap <C-x>d     :YcmCompleter GetDoc<CR>
 
-"" Search/Highlight/Replace
+"" Visual / Search / Highlight / Replace
 " { Credit: https://github.com/nelstrom/vim-visual-star-search/blob/master/plugin/visual-star-search.vim
 "           https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
 function! s:VSetSearch(cmdtype)
