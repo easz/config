@@ -128,6 +128,7 @@ endif
 "" YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
+let g:ycm_key_detailed_diagnostics = ''  " default '<leader>d'
 
 "" ALE
 "let g:ale_lint_on_text_changed = 'never'
@@ -144,11 +145,11 @@ let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 let mapleader="\<Space>"
 
 "" file browser (NERDTree)
-" <C-b>      -- to toggle file browser
-" <Tab>      -- to open file from file browser
-" <Enter>    -- to reveal opened file in file browser
+" <Leader>b         -- to toggle file browser
+" <Tab>             -- to open file from file browser
+" <Leader><Enter>   -- to reveal opened file in file browser
 nnoremap <silent> <Leader>b    :NERDTreeToggle<CR>
-nnoremap <silent> <CR>         :NERDTreeFind<CR>
+nnoremap <silent> <Leader><CR>         :NERDTreeFind<CR>
 let g:NERDTreeMapActivateNode = "<Tab>"
 let g:NERDTreeMinimalUI       = 1
 let g:NERDTreeChDirMode       = 2
@@ -186,6 +187,7 @@ nnoremap <C-x>r     :YcmCompleter GoToReferences<CR>
 nnoremap <C-x>t     :YcmCompleter GetType<CR>
 nnoremap <C-x>p     :YcmCompleter GetParent<CR>
 nnoremap <C-x>d     :YcmCompleter GetDoc<CR>
+nnoremap <C-x>l     :YcmDiags<CR>
 
 "" Visual / Search / Highlight / Replace
 " { Credit: https://github.com/nelstrom/vim-visual-star-search/blob/master/plugin/visual-star-search.vim
