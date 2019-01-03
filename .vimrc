@@ -120,6 +120,9 @@ au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 "" Add-On
 ""
 
+" Plug
+let g:plug_timeout=120
+
 "" ag / ack
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
