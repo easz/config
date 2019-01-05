@@ -1,5 +1,6 @@
-# Read /etc/bashrc, if present.
+# Read system bashrc, if present.
 [ -f /etc/bashrc ] && source /etc/bashrc
+[ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 
 # TERM
 export TERM=xterm-256color
@@ -21,7 +22,6 @@ alias md='mkdir -p'
 [ -d /usr/local/bin ]                 && export PATH="/usr/local/bin:$PATH"
 [ -d ~/Workspace/LOS/platform-tools ] && export PATH="~/Workspace/LOS/platform-tools:$PATH"
 [ -d /usr/local/opt/go/libexec ]      && export PATH="$PATH:/usr/local/opt/go/libexec/bin"
-
 
 ##
 ## Add-On & Extra
@@ -51,6 +51,10 @@ fi
 # bash-completion
 if [ -f "/usr/local/etc/bash_completion" ]; then
   source "/usr/local/etc/bash_completion"
+elif [ -f " /usr/share/bash-completion/bash_completion" ]; then
+  source " /usr/share/bash-completion/bash_completion"
+elif [ -f "/etc/profile.d/bash_completion.sh" ]; then
+  :
 else
   echo "To install bash-completion: https://github.com/scop/bash-completion"
 fi
