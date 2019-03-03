@@ -152,12 +152,13 @@ let mapleader="\<Space>"
 " <Tab>             -- to open file from file browser
 " <Leader><Enter>   -- to reveal opened file in file browser
 nnoremap <silent> <Leader>b    :NERDTreeToggle<CR>
-nnoremap <silent> <Leader><CR>         :NERDTreeFind<CR>
+nnoremap <silent> <Leader><CR> :NERDTreeFind<CR>
 let g:NERDTreeMapActivateNode = "<Tab>"
 let g:NERDTreeMinimalUI       = 1
 let g:NERDTreeChDirMode       = 2
 let g:NERDTreeShowHidden      = 1
 let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore', '\.swp$']
+let g:NERDTreeNodeDelimiter   = "\u00a0"
 
 "" Buffer, Window, File, Command
 " <Leader>w  -- close current buffer

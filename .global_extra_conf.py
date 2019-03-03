@@ -10,7 +10,8 @@ flags = [
     '-Werror',
     '-Wextra',
     '-Wshadow',
-    '-std=c++14',
+    '-pedantic',
+    '-std=c++17',
 ]
 
 
