@@ -28,7 +28,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 "Plug 'w0rp/ale'
 
 " Perforce
-Plug 'easz/perforce.vim'
+"Plug 'easz/perforce.vim'
 
 " misc.
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
