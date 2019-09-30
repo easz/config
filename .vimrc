@@ -25,9 +25,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" TODO: try out ALE support
 "Plug 'w0rp/ale'
 
 " Perforce
+" TODO: load the plugin only in perforce workspace?
 "Plug 'easz/perforce.vim'
 
 " misc.
@@ -174,7 +176,7 @@ nnoremap <silent> <Leader>.  :History<CR>
 nnoremap <silent> <Leader>;  :Files<CR>
 nnoremap <silent> <Leader>p  :History:<CR>
 " <C-s>      -- save file
-" note: 'stty -ixon' prevents terminal intercept C-s
+"note: 'stty -ixon' prevents terminal intercept C-s
 silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
 nnoremap <C-s>  :update<CR>
