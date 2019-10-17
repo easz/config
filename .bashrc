@@ -2,6 +2,9 @@
 [ -f /etc/bashrc ] && source /etc/bashrc
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 
+# locale
+export LC_ALL=en_US.UTF-8
+
 # TERM
 export TERM=xterm-256color
 
@@ -20,6 +23,7 @@ alias md='mkdir -p'
 
 # PATH
 [ -d /usr/local/bin ]                 && export PATH="/usr/local/bin:$PATH"
+[ -d /usr/local/sbin ]                && export PATH="/usr/local/sbin:$PATH"
 [ -d ~/Workspace/LOS/platform-tools ] && export PATH="~/Workspace/LOS/platform-tools:$PATH"
 [ -d /usr/local/opt/go/libexec ]      && export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 

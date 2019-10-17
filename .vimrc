@@ -2,10 +2,6 @@
 "" Plug-Ins
 ""
 
-""  Note: Manual Installation Steps
-""
-""  YCM -- ~/.vim/plugged/YouCompleteMe/install.py
-
 "" vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -23,13 +19,10 @@ Plug 'junegunn/fzf.vim'
 
 " language
 Plug 'sheerun/vim-polyglot'
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-" TODO: try out ALE support
-"Plug 'w0rp/ale'
+Plug 'natebosch/vim-lsc'
 
 " Perforce
-" TODO: load the plugin only in perforce workspace?
+" TODO: load the plugin only in perforce workspace
 "Plug 'easz/perforce.vim'
 
 " misc.
@@ -110,11 +103,11 @@ set fillchars+=vert:\      " windows separator w/o '|'
 set clipboard=unnamed      " clipboard sharing
 
 
-"" open file at the last visited line
+"" open file and jumo to at the last visited line
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 
-"" language
+"" filetype/language detection
 au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 
 
@@ -122,7 +115,7 @@ au BufRead * if search('\M-*- C++ -*-', 'n', 1) | setlocal ft=cpp | endif
 "" Add-On
 ""
 
-" Plug
+"" Plug
 let g:plug_timeout=120
 
 "" ag / ack
@@ -130,17 +123,18 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-"" YCM
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
-let g:ycm_key_detailed_diagnostics = ''  " default '<leader>d'
-
-"" ALE
-"let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_enter = 0
-"let $PATH = '/usr/local/opt/llvm/bin:'.$PATH
-"let g:ale_linters = {'cpp': []}
-"let g:ale_fixers = {'cpp': ['clang-format']}
+"" vim-lsc
+let g:lsc_server_commands = {
+      \ 'cpp': {
+      \    'command': 'ccls',
+      \    'message_hooks': {
+      \        'initialize': {
+      \            'initializationOptions': {'cache': {'directory': '/tmp/ccls/cache'}},
+      \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('.ccls', expand('%:p') . ';'), ':p:h'))}
+      \        },
+      \    },
+      \  },
+      \}
 
 ""
 "" Key Mapping
@@ -149,7 +143,8 @@ let g:ycm_key_detailed_diagnostics = ''  " default '<leader>d'
 "" <Space>   -- Leader key
 let mapleader="\<Space>"
 
-"" file browser (NERDTree)
+"" NERDTree / (file browser)
+"
 " <Leader>b         -- to toggle file browser
 " <Tab>             -- to open file from file browser
 " <Leader><Enter>   -- to reveal opened file in file browser
@@ -161,8 +156,10 @@ let g:NERDTreeChDirMode       = 2
 let g:NERDTreeShowHidden      = 1
 let g:NERDTreeIgnore          = ['\.DS_Store$', '\~$', '\..*ignore', '\.swp$']
 let g:NERDTreeNodeDelimiter   = "\u00a0"
+" }
 
 "" Buffer, Window, File, Command
+" {
 " <Leader>w  -- close current buffer
 " <Leader>q  -- close current window
 nnoremap <silent> <Leader>w  :bp\|bd #<CR>
@@ -184,16 +181,10 @@ vnoremap <C-s>  <C-C>:update<CR>
 inoremap <C-s>  <C-O>:update<CR>
 " <Tab>         -- switch buffers
 " <S-Tab>       -- reverse switch buffers
-nnoremap <silent> <Tab>  :bnext<CR>
-nnoremap <silent> <S-Tab>        :bprevious<CR>
+nnoremap <silent> <Tab>   :bnext<CR>
+nnoremap <silent> <S-Tab> :bprevious<CR>
+"}
 
-"" YCM
-nnoremap <Leader>g  :YcmCompleter GoTo<CR>
-nnoremap <C-x>r     :YcmCompleter GoToReferences<CR>
-nnoremap <C-x>t     :YcmCompleter GetType<CR>
-nnoremap <C-x>p     :YcmCompleter GetParent<CR>
-nnoremap <C-x>d     :YcmCompleter GetDoc<CR>
-nnoremap <C-x>l     :YcmDiags<CR>
 
 "" Visual / Search / Highlight / Replace
 " { Credit: https://github.com/nelstrom/vim-visual-star-search/blob/master/plugin/visual-star-search.vim
@@ -215,3 +206,22 @@ vnoremap <C-r> "hy:%s/<c-r>=<SID>VSetSearch('/')<CR>//gc<left><left><left>
 nnoremap <silent> <Leader><ESC>  :noh<CR>
 " }
 
+
+"" vim-lsc
+" {
+let g:lsc_auto_map = {
+      \ 'GoToDefinition': '<Leader>g',
+      \ 'GoToDefinitionSplit': ['<C-x>g'],
+      \ 'FindReferences': '<C-x>r',
+      \ 'NextReference': '<C-x>n',
+      \ 'PreviousReference': '<C-x>p',
+      \ 'FindImplementations': '<C-x>i',
+      \ 'FindCodeActions': '<C-x>a',
+      \ 'Rename': '<C-x>R',
+      \ 'ShowHover': v:true,
+      \ 'DocumentSymbol': '<C-x>b',
+      \ 'WorkspaceSymbol': '<C-x>s',
+      \ 'SignatureHelp': '<C-x>h',
+      \ 'Completion': 'completefunc',
+      \}
+" }
