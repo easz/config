@@ -22,8 +22,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'natebosch/vim-lsc'
 
 " Perforce
-" TODO: load the plugin only in perforce workspace
-"Plug 'easz/perforce.vim'
+Plug 'easz/perforce.vim'
 
 " misc.
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
