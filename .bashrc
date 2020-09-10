@@ -114,7 +114,7 @@ fi
 if command -v virtualenv 1>/dev/null 2>&1; then
   export WORKON_HOME=~/.virtualenvs
   mkdir -p $WORKON_HOME
-  $(pyenv which python3)/../virtualenvwrapper.sh
+  . $(pyenv which python3)/../virtualenvwrapper.sh
 fi
 
 ##
