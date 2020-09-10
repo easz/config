@@ -3,6 +3,7 @@
 [ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 
 # locale
+export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # TERM
@@ -104,6 +105,17 @@ else
   echo "To install silver searcher: https://github.com/ggreer/the_silver_searcher"
 fi
 
+# python
+# https://opensource.com/article/19/6/python-virtual-environments-mac
+# https://opensource.com/article/19/5/python-3-default-mac#what-to-do
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+if command -v virtualenv 1>/dev/null 2>&1; then
+  export WORKON_HOME=~/.virtualenvs
+  mkdir -p $WORKON_HOME
+  $(pyenv which python3)/../virtualenvwrapper.sh
+fi
 
 ##
 ## Private Stuff
