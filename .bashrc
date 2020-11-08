@@ -25,7 +25,6 @@ alias md='mkdir -p'
 # PATH
 [ -d /usr/local/bin ]                 && export PATH="/usr/local/bin:$PATH"
 [ -d /usr/local/sbin ]                && export PATH="/usr/local/sbin:$PATH"
-[ -d ~/Workspace/LOS/platform-tools ] && export PATH="~/Workspace/LOS/platform-tools:$PATH"
 [ -d /usr/local/opt/go/libexec ]      && export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 
 ##

@@ -126,10 +126,10 @@ endif
 let g:lsc_server_commands = {
       \ 'cpp': {
       \    'command': 'ccls',
+      \    'suppress_stderr': v:true,
       \    'message_hooks': {
       \        'initialize': {
-      \            'initializationOptions': {'cache': {'directory': '/tmp/ccls/cache'}},
-      \            'rootUri': {m, p -> lsc#uri#documentUri(fnamemodify(findfile('.ccls', expand('%:p') . ';'), ':p:h'))}
+      \            'initializationOptions': {'cache': {'directory': '/tmp/lsc/cpp/cache'}}
       \        },
       \    },
       \  },
