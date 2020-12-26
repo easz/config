@@ -14,7 +14,7 @@ Plug 'scrooloose/nerdtree'
 
 " search
 Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " language
@@ -22,7 +22,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'natebosch/vim-lsc'
 
 " Perforce
-Plug 'easz/perforce.vim'
+"Plug 'easz/perforce.vim'
 
 " misc.
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'

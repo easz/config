@@ -1,7 +1,3 @@
-# Read system bashrc, if present.
-[ -f /etc/bashrc ] && source /etc/bashrc
-[ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
-
 # locale
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -23,9 +19,7 @@ alias lla='ll -a'
 alias md='mkdir -p'
 
 # PATH
-[ -d /usr/local/bin ]                 && export PATH="/usr/local/bin:$PATH"
 [ -d /usr/local/sbin ]                && export PATH="/usr/local/sbin:$PATH"
-[ -d /usr/local/opt/go/libexec ]      && export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 
 ##
 ## Add-On & Extra
@@ -33,7 +27,7 @@ alias md='mkdir -p'
 # Note: the order matters
 
 # bash-git-prompt
-GIT_PROMPT_ONLY_IN_REPO=0
+GIT_PROMPT_ONLY_IN_REPO=1
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_IGNORE_SUBMODULES=1
 GIT_PROMPT_WITH_VIRTUAL_ENV=0
@@ -53,7 +47,9 @@ fi
 
 
 # bash-completion
-if [ -f "/usr/local/etc/bash_completion" ]; then
+if [ -f "/usr/local/etc/profile.d/bash_completion.sh" ]; then
+  source "/usr/local/etc/profile.d/bash_completion.sh"
+elif [ -f "/usr/local/etc/bash_completion" ]; then
   source "/usr/local/etc/bash_completion"
 elif [ -f " /usr/share/bash-completion/bash_completion" ]; then
   source " /usr/share/bash-completion/bash_completion"
@@ -66,11 +62,7 @@ fi
 
 # tmux
 if hash tmux 2>/dev/null; then
-  # macOS require reattach-to-user-namespace
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    hash reattach-to-user-namespace 2>/dev/null \
-      || echo "To install reattach-to-user-namespace: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard"
-  fi
+  :
 else
   echo "To install tmux: https://github.com/tmux/tmux"
 fi
@@ -81,17 +73,12 @@ fi
 
 
 # fzf
-if [ ! -d ~/.fzf ]; then
-  echo "To install fzf with vim: https://github.com/junegunn/fzf.vim"
-else
+if hash fzf 2>/dev/null; then
+  export FZF_TMUX=1
   [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-  if hash fzf 2>/dev/null; then
-    export FZF_TMUX=1
-  else
-    echo "To install fzf: https://github.com/junegunn/fzf"
-  fi
+else
+  echo "To install fzf: https://github.com/junegunn/fzf"
 fi
-
 
 # ag -- silver searche for fzf
 if hash ag 2>/dev/null; then
