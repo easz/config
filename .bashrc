@@ -1,3 +1,5 @@
+# macos 10.14
+
 # prompt
 export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;7m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;214m\]\w\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
 
