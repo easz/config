@@ -1,3 +1,6 @@
+# prompt
+export PS1="\u@\[$(tput sgr0)\]\[\033[38;5;7m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;214m\]\w\[$(tput sgr0)\]\n\\$ \[$(tput sgr0)\]"
+
 # locale
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -109,4 +112,5 @@ fi
 
 # Read any private stuff, e.g. tokens, keys, if present.
 [ -f ~/.bashrc.private ] && source ~/.bashrc.private
+
 
