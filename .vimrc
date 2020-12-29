@@ -124,16 +124,17 @@ endif
 
 "" vim-lsc
 let g:lsc_server_commands = {
-      \ 'cpp': {
-      \    'command': 'ccls',
-      \    'suppress_stderr': v:true,
-      \    'message_hooks': {
-      \        'initialize': {
-      \            'initializationOptions': {'cache': {'directory': '/tmp/lsc/cpp/cache'}}
-      \        },
-      \    },
-      \  },
-      \}
+  \ 'cpp': {
+  \   'command': 'clangd --background-index',
+  \   'suppress_stderr': v:true
+  \ },
+  \ 'c': {
+  \   'command': 'clangd --background-index',
+  \   'suppress_stderr': v:true
+  \}
+\}
+
+
 
 ""
 "" Key Mapping
