@@ -26,6 +26,9 @@ alias md='mkdir -p'
 # PATH
 [ -d /usr/local/sbin ]                && export PATH="/usr/local/sbin:$PATH"
 
+# gpg
+export GPG_TTY=$(tty)
+
 ##
 ## Add-On & Extra
 ##
@@ -97,15 +100,11 @@ else
 fi
 
 # python
-# https://opensource.com/article/19/6/python-virtual-environments-mac
-# https://opensource.com/article/19/5/python-3-default-mac#what-to-do
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-if command -v virtualenv 1>/dev/null 2>&1; then
-  export WORKON_HOME=~/.virtualenvs
-  mkdir -p $WORKON_HOME
-  . $(pyenv which python3)/../virtualenvwrapper.sh
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 ##
