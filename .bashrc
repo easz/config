@@ -100,10 +100,10 @@ else
 fi
 
 # python
-if command -v pyenv 1>/dev/null 2>&1; then
+if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-if which pyenv-virtualenv-init > /dev/null; then
+if command -v  pyenv-virtualenv-init >/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
